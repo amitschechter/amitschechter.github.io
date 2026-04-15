@@ -175,6 +175,23 @@
     .news-list li:last-child { border-bottom: none; }
     .news-date { color: #888; min-width: 100px; font-size: 13px; padding-top: 1px; }
 
+    /* ── Featured paper (wide teaser above, details below) ── */
+    .paper-featured {
+      padding: 20px 0 24px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .paper-featured:last-child { border-bottom: none; }
+    .paper-featured .paper-teaser {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 6px;
+      border: 1px solid #e8e8e8;
+      display: block;
+      margin-bottom: 12px;
+    }
+
     /* ── Footer ── */
     footer {
       margin-top: 60px;
@@ -255,42 +272,37 @@
        PUBLICATIONS
        Include: peer-reviewed + arXiv preprints
   ══════════════════════════════════ -->
-  <h2 class="section-title">Publications and Manuscripts</h2>
+  <h2 class="section-title">Publications</h2>
 
+  <!-- ── PAPER 1: ARCE — featured with wide teaser ── -->
+  <div class="paper-featured">
+    <!--
+      Save the teaser (Image 1 — training/inference figure) as images/arce_teaser.png
+      Recommended: crop to ~900×280px for best display
+    -->
+    <img class="paper-teaser" src="images/arce_teaser.png" alt="ARCE teaser: training and inference overview">
+    <div class="paper-title">
+      Concept Erasure via Attention Redirection
+      <span class="badge badge-preprint">CVPR Findings 2026</span>
+    </div>
+    <div class="paper-authors" style="margin-top:4px;">
+      <span class="me">Amit Schechter</span>, Rinon Gal, Ofir Kedem, Gal Chechik, Daniel Cohen-Or
+    </div>
+    <div class="paper-venue" style="margin-top:2px;">
+      <span class="venue-name">CVPR Findings</span>, 2026
+    </div>
+    <div class="paper-abstract" style="margin-top:8px;">
+      Large text-to-image diffusion models can reproduce copyrighted or sensitive visual concepts, and while prior erasure methods suppress targets by fine-tuning model weights, they suffer from concept re-emergence under adversarial prompting, inpainting, or minor model edits. We introduce ARCE, which trains a per-concept eraser key that competes for attention probability mass in the cross-attention layers, surgically redirecting image patch attention away from target tokens toward a neutral anchor value — leaving the base model frozen and unrelated concepts intact. Across 25 concepts spanning objects, copyrighted characters, and celebrities, ARCE achieves the strongest erasure while significantly outperforming ESD, UCE, and EraseAnything on neighboring concept preservation and inpainting robustness.
+    </div>
+    <div class="paper-links" style="margin-top:8px;">
+      <a href="data/Concept_Erasure_via_Attention_Redirection_pre.pdf">[paper]</a>
+      <!-- <a href="#">[code]</a> -->
+      <!-- <a href="#">[project page]</a> -->
+    </div>
+  </div>
+
+  <!-- ── PAPER 2: placeholder — standard row layout ── -->
   <table class="paper-list">
-
-    <!-- ── PAPER 1: arXiv preprint ── -->
-    <tr>
-      <td class="paper-thumb">
-        <!--
-          Save a 300×200 teaser image as images/paper1.png
-          Good options: results figure, method overview, teaser collage
-        -->
-        <img src="images/paper1.png" alt="Paper 1 teaser">
-      </td>
-      <td>
-        <div class="paper-title">
-          Concept Erasure via Attention Redirection
-          <span class="badge badge-preprint">CVPR Findings</span>
-        </div>
-        <div class="paper-authors">
-          <span class="me">Amit Schechter</span>, Rinon Gal, Ofir Kedem, Gal Chechik, Daniel Cohen-Or
-        </div>
-        <div class="paper-venue">
-          <span class="venue-name">CVPR Findings</span>, 2026
-        </div>
-        <div class="paper-abstract">
-          Text-to-image diffusion models can reproduce copyrighted or sensitive concepts, yet existing erasure methods are brittle and often damage unrelated content. We introduce Concept Erasure via Attention Redirection (ARCE), which trains a lightweight eraser token to redirect attention away from target concepts toward a neutral anchor, without modifying model weights. ARCE achieves state-of-the-art concept suppression while remaining robust to inpainting — a setting where prior methods frequently fail.
-        </div>
-        <div class="paper-links">
-          <a href="https://amitschechter.github.io/data/Concept_Erasure_via_Attention_Redirection_pre.pdf">[Paper]</a>
-          <!-- <a href="https://github.com/yourusername/project">[code]</a> -->
-          <!-- <a href="project-page/index.html">[project page]</a> -->
-        </div>
-      </td>
-    </tr>
-
-    <!-- ── PAPER 2: conference paper ── -->
     <tr>
       <td class="paper-thumb">
         <img src="images/paper2.png" alt="Paper 2 teaser">
@@ -317,7 +329,6 @@
         </div>
       </td>
     </tr>
-
   </table>
 
 
